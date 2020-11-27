@@ -5,61 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css"rel="stylesheet" href="kadai20201123.css">
     <title>チャットサンプル</title>
-    　　　
+
 </head>
 <body>
-    <h3 id="me" user_id="1">あなたはユーザー1です</h3>
-    <h3 id="partner">相手</h3>
-    <div id="users">
-        <button class="user" user_id="2">ユーザー2</button>
-    </div>
-    <br>
 
     <!--自分やユーザーの情報-->
-    <div id="your_container">
-
-
-    　　　　<!--チャットの外側部分①-->
-    <!-- 　　<div id="bms_messages_container">　 -->
-        <!--ヘッダー部分②--> 
-    <!-- 　　　　<div id="bms_chat_header"> -->
-            <!--ステータス-->
-            <!-- <div id="bms_chat_user_status"> -->
-                <!--ステータスアイコン-->
-                <!-- <div id="bms_status_icon">●</div> -->
-            　　　　<!--ユーザー名-->
-            <!-- 　　　　<div id="bms_chat_user_name">ユーザー</div>
-        　　　　</div> 
-    　　　　</div> -->
-            <!--タイムライン部分③--> 
-        <!-- <div id="bms_messages"> -->
-            <!--メッセージ1(左側)-->　
-        <!-- 　　<div class="bms_message bms_left">
-            <div class="bms_message_box">  
-                <div class="bms_message_content">
-                    <div class="bms_message_text">これは便利だ！</div>
-                </div>
-            </div>
-    　　　　</div>
-        <div class="bms_clear"></div>回り込みを解除(スタイルはCSSで充てる)　 -->
-            <!--メッセージ-2(右側)-->
-                <!-- <div class="bms_message bms_right">
-                    <div class="bms_message_box">
-                        <div class="bms_message_content">
-                            <div class="bms_message_text">まあまあいけとる</div>
-                        </div>
-                    </div>
-                </div> 
-                <div class="bms_clear"></div><!--回り込みを解除(スタイルはCSSで充てる)-->　
-            <!-- </div>  -->
-            <!-- テキストボックス、送信ボタン④  -->
-            <!-- <div id="bms_send">
-                <textarea id= "bms_send_message"></textarea>
-                <div id="bms_send_btn">送信</div>
-            </div>
-        　</div> 
-        </div> -->
-    </div>
+    <div class="container">
+     <div class="chat_area"></div>
+       <div class="massage_area">
+        <div class="massage_area_text">
+            <textarea id ="text"></textarea>
+        </div>
+        <div class="message_area_button">
+            <button id="send" class="disabled_button">送信</button>
+        </div>   
+        </div>
+    </div>  
+　  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="kadai20201123.js"></script>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -71,7 +33,7 @@
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
-    apiKey: "",
+    apiKey: "AIzaSyBlkKgiYpRIwLTtyxGdVHW78WYycPlIG3o",
     authDomain: "kadai-chat-b5ee3.firebaseapp.com",
     databaseURL: "https://kadai-chat-b5ee3.firebaseio.com",
     projectId: "kadai-chat-b5ee3",
@@ -80,7 +42,20 @@
     appId: "1:37302872294:web:00745c9a0a411b00ef3327"
   };
   // Initialize Firebase
+
   firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore().collection('20201123chat')
+
+  //送信ボタンクリックでメッセージ送信 作成中
+     $('#send').on('click',function(){
+     db.add =({
+         text: $('#text').val(),
+         time: firebase.firestore.FieldValue.serverTimestamp(),
+     });
+
+    $('#text').val('');
+    });
+    
 </script>
 </body>
 </html>
