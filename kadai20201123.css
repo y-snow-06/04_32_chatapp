@@ -12,10 +12,12 @@
 .massage_area{
     display: flex;
     justify-content: space-between;  
+    
 
 }
 .massage_area_text textarea {
-    width: 240%; 
+    width: 100%; 
+    display: inline-block;
     height: 100%;
     padding: 14px 6px 0px 6px;
     text-align: left;
@@ -28,7 +30,7 @@
 }
 
    .message_area_button button {
-    width: 120%;
+    width: 100%;
     margin-left: 10px;
     height: 100%;
     background: #61E739;
